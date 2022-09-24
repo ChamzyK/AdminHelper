@@ -14,16 +14,16 @@ namespace AdminHelper.models.dbcontexts
         {
         }
 
-        public virtual DbSet<Actor> Актерs { get; set; } = null!;
-        public virtual DbSet<Genre> Жанрs { get; set; } = null!;
-        public virtual DbSet<Fullness> Наполненностьs { get; set; } = null!;
-        public virtual DbSet<Director> Режиссерs { get; set; } = null!;
-        public virtual DbSet<Role> Рольs { get; set; } = null!;
-        public virtual DbSet<Spectacle> Спектакльs { get; set; } = null!;
-        public virtual DbSet<SpectacleGenre> СпектакльЖанрs { get; set; } = null!;
-        public virtual DbSet<SpectacleFullness> СпектакльНаполненностьs { get; set; } = null!;
-        public virtual DbSet<SpectacleDirector> СпектакльРежиссерs { get; set; } = null!;
-        public virtual DbSet<RoleType> ТипРолиs { get; set; } = null!;
+        public virtual DbSet<Actor> Actors { get; set; } = null!;
+        public virtual DbSet<Genre> Genres { get; set; } = null!;
+        public virtual DbSet<Fullness> FullnessDbSet { get; set; } = null!;
+        public virtual DbSet<Director> Directors { get; set; } = null!;
+        public virtual DbSet<Role> Roles { get; set; } = null!;
+        public virtual DbSet<Spectacle> Spectacles { get; set; } = null!;
+        public virtual DbSet<SpectacleGenre> SpectacleGenres { get; set; } = null!;
+        public virtual DbSet<SpectacleFullness> SpectacleFullnessDbSet { get; set; } = null!;
+        public virtual DbSet<SpectacleDirector> SpectacleDirectors { get; set; } = null!;
+        public virtual DbSet<RoleType> RoleTypes { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,8 +38,6 @@ namespace AdminHelper.models.dbcontexts
         {
             modelBuilder.Entity<Actor>(entity =>
             {
-                entity.ToTable("Актер");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
@@ -51,8 +49,6 @@ namespace AdminHelper.models.dbcontexts
 
             modelBuilder.Entity<Genre>(entity =>
             {
-                entity.ToTable("Жанр");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.GenreName)
@@ -62,8 +58,6 @@ namespace AdminHelper.models.dbcontexts
 
             modelBuilder.Entity<Fullness>(entity =>
             {
-                entity.ToTable("Наполненность");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.FullnessName)
@@ -73,8 +67,6 @@ namespace AdminHelper.models.dbcontexts
 
             modelBuilder.Entity<Director>(entity =>
             {
-                entity.ToTable("Режиссер");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
@@ -86,8 +78,6 @@ namespace AdminHelper.models.dbcontexts
 
             modelBuilder.Entity<Role>(entity =>
             {
-                entity.ToTable("Роль");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.ActorId).HasColumnName("idАктер");
@@ -112,8 +102,6 @@ namespace AdminHelper.models.dbcontexts
 
             modelBuilder.Entity<Spectacle>(entity =>
             {
-                entity.ToTable("Спектакль");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Date).HasColumnType("smalldatetime");
@@ -124,9 +112,6 @@ namespace AdminHelper.models.dbcontexts
             modelBuilder.Entity<SpectacleGenre>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.ToTable("СпектакльЖанр");
-
                 entity.Property(e => e.GenreId).HasColumnName("idЖанр");
 
                 entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
@@ -145,9 +130,6 @@ namespace AdminHelper.models.dbcontexts
             modelBuilder.Entity<SpectacleFullness>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.ToTable("СпектакльНаполненность");
-
                 entity.Property(e => e.FullnessId).HasColumnName("idНаполненность");
 
                 entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
@@ -166,9 +148,6 @@ namespace AdminHelper.models.dbcontexts
             modelBuilder.Entity<SpectacleDirector>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.ToTable("СпектакльРежиссер");
-
                 entity.Property(e => e.DirectorId).HasColumnName("idРежиссер");
 
                 entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
@@ -186,8 +165,6 @@ namespace AdminHelper.models.dbcontexts
 
             modelBuilder.Entity<RoleType>(entity =>
             {
-                entity.ToTable("ТипРоли");
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Name).HasMaxLength(30);
