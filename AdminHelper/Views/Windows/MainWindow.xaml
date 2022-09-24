@@ -1,0 +1,62 @@
+﻿<Window x:Class="AdminHelper.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        mc:Ignorable="d"
+        Title="{Binding Title}" 
+        Height="650" Width="850"
+        MinHeight="550" MinWidth="650"
+        
+        DataContext="{Binding Source={StaticResource Locator},Path=MainViewModel}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid
+            Grid.Column="0" 
+            Background="Green">
+
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Command" Value="{Binding ChangeViewModelCommand}"/>
+                </Style>
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button
+                Grid.Row="0" 
+                Content="Спектакли"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=SpectacleViewModel}"/>
+            <Button 
+                Grid.Row="2" 
+                Content="Жанры"/>
+            <Button 
+                Grid.Row="1" 
+                Content="Актеры"/>
+            <Button 
+                Grid.Row="4" 
+                Content="Роли"/>
+            <Button 
+                Grid.Row="3" 
+                Content="Режиссеры"/>
+        </Grid>
+
+        <Grid 
+            Grid.Column="1" 
+            Background="Red"
+            DataContext="{Binding CurrentViewModel}">
+            <ContentPresenter Content="{Binding}"/>
+        </Grid>
+
+    </Grid>
+</Window>
