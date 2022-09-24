@@ -38,7 +38,6 @@ namespace AdminHelper.ViewModels
         private bool CanChangeViewModel(object? arg) => 
             arg is ViewModelBase viewModel && 
             viewModel != CurrentViewModel;
-
         private void ChangeViewModel(object? obj)
         {
             var viewModel = (ViewModelBase)obj!;

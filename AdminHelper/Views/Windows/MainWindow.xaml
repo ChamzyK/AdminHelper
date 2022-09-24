@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:entitiesViewModels="clr-namespace:AdminHelper.ViewModels.EntitiesViewModels"
+
         mc:Ignorable="d"
         Title="{Binding Title}" 
         Height="650" Width="850"
@@ -35,13 +36,17 @@
                 Content="Спектакли"
                 CommandParameter="{Binding Source={StaticResource Locator}, Path=SpectacleViewModel}"/>
             <Button 
-                Content="Жанры"/>
+                Content="Жанры"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=GenreViewModel}"/>
             <Button 
-                Content="Актеры"/>
+                Content="Актеры"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=ActorViewModel}"/>
             <Button 
-                Content="Роли"/>
+                Content="Тип роли"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=RoleTypeViewModel}"/>
             <Button 
-                Content="Режиссеры"/>
+                Content="Режиссеры"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=DirectorViewModel}"/>
         </StackPanel>
 
         <Grid 

@@ -3,9 +3,9 @@ using AdminHelper.Models.Repositories;
 
 namespace AdminHelper.ViewModels.EntitiesViewModels
 {
-    public class SpectacleViewModel : EntityViewModel<Spectacle>
+    public class GenreViewModel : EntityViewModel<Genre>
     {
-        public SpectacleViewModel(IRepository<Spectacle> repository) : base(repository)
+        public GenreViewModel(IRepository<Genre> repository) : base(repository)
         {
         }
     }
