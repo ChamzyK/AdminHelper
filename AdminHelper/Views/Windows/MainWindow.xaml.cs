@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace AdminHelper.Views.Windows
+﻿namespace AdminHelper.Views.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow() => InitializeComponent();
     }

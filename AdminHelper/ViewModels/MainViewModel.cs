@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using AdminHelper.Infrastructure.Commands;
-using AdminHelper.ViewModels.EntitiesViewModels;
 using AdminHelper.ViewModels.Shared;
 
 namespace AdminHelper.ViewModels
@@ -28,9 +27,9 @@ namespace AdminHelper.ViewModels
         }
 
 
-        public MainViewModel(SpectacleViewModel spectacleViewModel)
+        public MainViewModel(ViewModelBase viewModelBase)
         {
-            CurrentViewModel = spectacleViewModel;
+            CurrentViewModel = viewModelBase;
             Title = @"Театр ""На левом берегу""";
 
             ChangeViewModelCommand = new RelayCommand(ChangeViewModel, CanChangeViewModel);

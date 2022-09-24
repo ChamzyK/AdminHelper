@@ -6,7 +6,7 @@ namespace AdminHelper.ViewModels.Shared
 {
     //базовый класс для всех остальных классов VM (ViewModel)
     //базовый потому что в нем идет реализация интерфейса INotifyPropertyChanged (реализация этого интерфейса необходима для работы с V (View) частью приложения)
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

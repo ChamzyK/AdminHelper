@@ -7,6 +7,7 @@ namespace AdminHelper.ViewModels.Shared
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) =>
             services.AddSingleton<MainViewModel>()
-                .AddSingleton<SpectacleViewModel>();
+                .AddSingleton<SpectacleViewModel>()
+                .AddSingleton<ViewModelBase>();
     }
 }

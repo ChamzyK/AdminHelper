@@ -1,10 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:AdminHelper.ViewModels.EntitiesViewModels"
-                    xmlns:v="clr-namespace:AdminHelper.Views.EntitiesViews">
+                    xmlns:evm="clr-namespace:AdminHelper.ViewModels.EntitiesViewModels"
+                    xmlns:ev="clr-namespace:AdminHelper.Views.EntitiesViews"
+                    xmlns:svm="clr-namespace:AdminHelper.ViewModels.Shared"
+                    xmlns:sv="clr-namespace:AdminHelper.Views.Shared">
 
-    <DataTemplate DataType="{x:Type vm:SpectacleViewModel}">
-        <v:SpectacleView/>
+    <DataTemplate DataType="{x:Type svm:ViewModelBase}">
+        <sv:HomeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type evm:SpectacleViewModel}">
+        <ev:SpectacleView/>
     </DataTemplate>
 
 </ResourceDictionary>
