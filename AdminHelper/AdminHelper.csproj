@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\DbContexts\" />
+    <Folder Include="Models\Entities\" />
+  </ItemGroup>
+
 </Project>
