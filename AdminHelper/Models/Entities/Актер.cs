@@ -1,19 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminHelper.models.entities
 {
-    public partial class Актер
+    [Table("Актер")]
+    public partial class Actor
     {
-        public Актер()
+        public Actor()
         {
-            Рольs = new HashSet<Роль>();
+            Roles = new HashSet<Role>();
         }
 
+        [Column("Id")]
         public int Id { get; set; }
-        public string Фамилия { get; set; } = null!;
-        public string Имя { get; set; } = null!;
-        public string Отчество { get; set; } = null!;
+        [Column("Фамилия")]
+        public string LastName { get; set; } = null!;
+        [Column("Имя")]
+        public string FirstName { get; set; } = null!;
+        [Column("Отчество")]
+        public string Patronymic { get; set; } = null!;
 
-        public virtual ICollection<Роль> Рольs { get; set; }
+        [Column("Роль")]
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

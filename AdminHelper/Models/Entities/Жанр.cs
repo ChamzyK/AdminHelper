@@ -1,8 +1,13 @@
-﻿namespace AdminHelper.models.entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AdminHelper.models.entities
 {
-    public partial class Жанр
+    [Table("Жанр")]
+    public partial class Genre
     {
+        [Column("Id")]
         public int Id { get; set; }
-        public string Жанр1 { get; set; } = null!;
+        [Column("Жанр")]
+        public string GenreName { get; set; } = null!;
     }
 }

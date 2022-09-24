@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminHelper.models.entities
 {
-    public partial class ТипРоли
+    [Table("ТипРоли")]
+    public partial class RoleType
     {
-        public ТипРоли()
+        public RoleType()
         {
-            Рольs = new HashSet<Роль>();
+            Roles = new HashSet<Role>();
         }
 
+        [Column("Id")]
         public int Id { get; set; }
-        public string Название { get; set; } = null!;
+        [Column("Название")]
+        public string Name { get; set; } = null!;
 
-        public virtual ICollection<Роль> Рольs { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

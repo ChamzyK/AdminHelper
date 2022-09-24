@@ -14,16 +14,16 @@ namespace AdminHelper.models.dbcontexts
         {
         }
 
-        public virtual DbSet<Актер> Актерs { get; set; } = null!;
-        public virtual DbSet<Жанр> Жанрs { get; set; } = null!;
-        public virtual DbSet<Наполненность> Наполненностьs { get; set; } = null!;
-        public virtual DbSet<Режиссер> Режиссерs { get; set; } = null!;
-        public virtual DbSet<Роль> Рольs { get; set; } = null!;
-        public virtual DbSet<Спектакль> Спектакльs { get; set; } = null!;
-        public virtual DbSet<СпектакльЖанр> СпектакльЖанрs { get; set; } = null!;
-        public virtual DbSet<СпектакльНаполненность> СпектакльНаполненностьs { get; set; } = null!;
-        public virtual DbSet<СпектакльРежиссер> СпектакльРежиссерs { get; set; } = null!;
-        public virtual DbSet<ТипРоли> ТипРолиs { get; set; } = null!;
+        public virtual DbSet<Actor> Актерs { get; set; } = null!;
+        public virtual DbSet<Genre> Жанрs { get; set; } = null!;
+        public virtual DbSet<Fullness> Наполненностьs { get; set; } = null!;
+        public virtual DbSet<Director> Режиссерs { get; set; } = null!;
+        public virtual DbSet<Role> Рольs { get; set; } = null!;
+        public virtual DbSet<Spectacle> Спектакльs { get; set; } = null!;
+        public virtual DbSet<SpectacleGenre> СпектакльЖанрs { get; set; } = null!;
+        public virtual DbSet<SpectacleFullness> СпектакльНаполненностьs { get; set; } = null!;
+        public virtual DbSet<SpectacleDirector> СпектакльРежиссерs { get; set; } = null!;
+        public virtual DbSet<RoleType> ТипРолиs { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,161 +36,161 @@ namespace AdminHelper.models.dbcontexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Актер>(entity =>
+            modelBuilder.Entity<Actor>(entity =>
             {
                 entity.ToTable("Актер");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Имя).HasMaxLength(50);
+                entity.Property(e => e.FirstName).HasMaxLength(50);
 
-                entity.Property(e => e.Отчество).HasMaxLength(50);
+                entity.Property(e => e.Patronymic).HasMaxLength(50);
 
-                entity.Property(e => e.Фамилия).HasMaxLength(50);
+                entity.Property(e => e.LastName).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Жанр>(entity =>
+            modelBuilder.Entity<Genre>(entity =>
             {
                 entity.ToTable("Жанр");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Жанр1)
+                entity.Property(e => e.GenreName)
                     .HasMaxLength(70)
                     .HasColumnName("Жанр");
             });
 
-            modelBuilder.Entity<Наполненность>(entity =>
+            modelBuilder.Entity<Fullness>(entity =>
             {
                 entity.ToTable("Наполненность");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Наполненность1)
+                entity.Property(e => e.FullnessName)
                     .HasMaxLength(70)
                     .HasColumnName("Наполненность");
             });
 
-            modelBuilder.Entity<Режиссер>(entity =>
+            modelBuilder.Entity<Director>(entity =>
             {
                 entity.ToTable("Режиссер");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Имя).HasMaxLength(50);
+                entity.Property(e => e.FirstName).HasMaxLength(50);
 
-                entity.Property(e => e.Отчество).HasMaxLength(50);
+                entity.Property(e => e.Patronymic).HasMaxLength(50);
 
-                entity.Property(e => e.Фамилия).HasMaxLength(50);
+                entity.Property(e => e.LastName).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Роль>(entity =>
+            modelBuilder.Entity<Role>(entity =>
             {
                 entity.ToTable("Роль");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.IdАктер).HasColumnName("idАктер");
+                entity.Property(e => e.ActorId).HasColumnName("idАктер");
 
-                entity.Property(e => e.IdСпектакль).HasColumnName("idСпектакль");
+                entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
 
-                entity.HasOne(d => d.IdАктерNavigation)
-                    .WithMany(p => p.Рольs)
-                    .HasForeignKey(d => d.IdАктер)
+                entity.HasOne(d => d.ActorIdNavigation)
+                    .WithMany(p => p.Roles)
+                    .HasForeignKey(d => d.ActorId)
                     .HasConstraintName("FK__Роль__idАктер__31EC6D26");
 
-                entity.HasOne(d => d.IdСпектакльNavigation)
-                    .WithMany(p => p.Рольs)
-                    .HasForeignKey(d => d.IdСпектакль)
+                entity.HasOne(d => d.SpectacleIdNavigation)
+                    .WithMany(p => p.Roles)
+                    .HasForeignKey(d => d.SpectacleId)
                     .HasConstraintName("FK__Роль__idСпектакл__30F848ED");
 
-                entity.HasOne(d => d.НазваниеNavigation)
-                    .WithMany(p => p.Рольs)
-                    .HasForeignKey(d => d.Название)
+                entity.HasOne(d => d.NameNavigation)
+                    .WithMany(p => p.Roles)
+                    .HasForeignKey(d => d.Name)
                     .HasConstraintName("FK__Роль__Название__300424B4");
             });
 
-            modelBuilder.Entity<Спектакль>(entity =>
+            modelBuilder.Entity<Spectacle>(entity =>
             {
                 entity.ToTable("Спектакль");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Дата).HasColumnType("smalldatetime");
+                entity.Property(e => e.Date).HasColumnType("smalldatetime");
 
-                entity.Property(e => e.Название).HasMaxLength(70);
+                entity.Property(e => e.Name).HasMaxLength(70);
             });
 
-            modelBuilder.Entity<СпектакльЖанр>(entity =>
+            modelBuilder.Entity<SpectacleGenre>(entity =>
             {
                 entity.HasNoKey();
 
                 entity.ToTable("СпектакльЖанр");
 
-                entity.Property(e => e.IdЖанр).HasColumnName("idЖанр");
+                entity.Property(e => e.GenreId).HasColumnName("idЖанр");
 
-                entity.Property(e => e.IdСпектакль).HasColumnName("idСпектакль");
+                entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
 
-                entity.HasOne(d => d.IdЖанрNavigation)
+                entity.HasOne(d => d.GenreIdNavigation)
                     .WithMany()
-                    .HasForeignKey(d => d.IdЖанр)
+                    .HasForeignKey(d => d.GenreId)
                     .HasConstraintName("FK__Спектакль__idЖан__34C8D9D1");
 
-                entity.HasOne(d => d.IdСпектакльNavigation)
+                entity.HasOne(d => d.SpectacleIdNavigation)
                     .WithMany()
-                    .HasForeignKey(d => d.IdСпектакль)
+                    .HasForeignKey(d => d.SpectacleId)
                     .HasConstraintName("FK__Спектакль__idСпе__33D4B598");
             });
 
-            modelBuilder.Entity<СпектакльНаполненность>(entity =>
+            modelBuilder.Entity<SpectacleFullness>(entity =>
             {
                 entity.HasNoKey();
 
                 entity.ToTable("СпектакльНаполненность");
 
-                entity.Property(e => e.IdНаполненность).HasColumnName("idНаполненность");
+                entity.Property(e => e.FullnessId).HasColumnName("idНаполненность");
 
-                entity.Property(e => e.IdСпектакль).HasColumnName("idСпектакль");
+                entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
 
-                entity.HasOne(d => d.IdНаполненностьNavigation)
+                entity.HasOne(d => d.FullnessIdNavigation)
                     .WithMany()
-                    .HasForeignKey(d => d.IdНаполненность)
+                    .HasForeignKey(d => d.FullnessId)
                     .HasConstraintName("FK__Спектакль__idНап__3A81B327");
 
-                entity.HasOne(d => d.IdСпектакльNavigation)
+                entity.HasOne(d => d.SpectacleIdNavigation)
                     .WithMany()
-                    .HasForeignKey(d => d.IdСпектакль)
+                    .HasForeignKey(d => d.SpectacleId)
                     .HasConstraintName("FK__Спектакль__idСпе__398D8EEE");
             });
 
-            modelBuilder.Entity<СпектакльРежиссер>(entity =>
+            modelBuilder.Entity<SpectacleDirector>(entity =>
             {
                 entity.HasNoKey();
 
                 entity.ToTable("СпектакльРежиссер");
 
-                entity.Property(e => e.IdРежиссер).HasColumnName("idРежиссер");
+                entity.Property(e => e.DirectorId).HasColumnName("idРежиссер");
 
-                entity.Property(e => e.IdСпектакль).HasColumnName("idСпектакль");
+                entity.Property(e => e.SpectacleId).HasColumnName("idСпектакль");
 
-                entity.HasOne(d => d.IdРежиссерNavigation)
+                entity.HasOne(d => d.DirectorIdNavigation)
                     .WithMany()
-                    .HasForeignKey(d => d.IdРежиссер)
+                    .HasForeignKey(d => d.DirectorId)
                     .HasConstraintName("FK__Спектакль__idРеж__37A5467C");
 
-                entity.HasOne(d => d.IdСпектакльNavigation)
+                entity.HasOne(d => d.SpectacleIdNavigation)
                     .WithMany()
-                    .HasForeignKey(d => d.IdСпектакль)
+                    .HasForeignKey(d => d.SpectacleId)
                     .HasConstraintName("FK__Спектакль__idСпе__36B12243");
             });
 
-            modelBuilder.Entity<ТипРоли>(entity =>
+            modelBuilder.Entity<RoleType>(entity =>
             {
                 entity.ToTable("ТипРоли");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Название).HasMaxLength(30);
+                entity.Property(e => e.Name).HasMaxLength(30);
             });
 
             OnModelCreatingPartial(modelBuilder);

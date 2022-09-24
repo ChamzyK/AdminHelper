@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminHelper.models.entities
 {
-    public partial class Спектакль
+    [Table("Спектакль")]
+    public partial class Spectacle
     {
-        public Спектакль()
+        public Spectacle()
         {
-            Рольs = new HashSet<Роль>();
+            Roles = new HashSet<Role>();
         }
 
+        [Column("Id")]
         public int Id { get; set; }
-        public string Название { get; set; } = null!;
-        public DateTime? Дата { get; set; }
+        [Column("Название")]
+        public string Name { get; set; } = null!;
+        [Column("Дата")]
+        public DateTime? Date { get; set; }
 
-        public virtual ICollection<Роль> Рольs { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

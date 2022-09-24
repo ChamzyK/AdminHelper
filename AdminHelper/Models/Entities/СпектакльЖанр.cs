@@ -1,11 +1,16 @@
-﻿namespace AdminHelper.models.entities
-{
-    public partial class СпектакльЖанр
-    {
-        public int? IdСпектакль { get; set; }
-        public int? IdЖанр { get; set; }
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-        public virtual Жанр? IdЖанрNavigation { get; set; }
-        public virtual Спектакль? IdСпектакльNavigation { get; set; }
+namespace AdminHelper.models.entities
+{
+    [Table("СпектакльЖанр")]
+    public partial class SpectacleGenre
+    {
+        [Column("IdСпектакль")]
+        public int? SpectacleId { get; set; }
+        [Column("IdЖанр")]
+        public int? GenreId { get; set; }
+
+        public virtual Genre? GenreIdNavigation { get; set; }
+        public virtual Spectacle? SpectacleIdNavigation { get; set; }
     }
 }

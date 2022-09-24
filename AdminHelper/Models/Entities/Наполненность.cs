@@ -1,9 +1,15 @@
-﻿namespace AdminHelper.models.entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AdminHelper.models.entities
 {
-    public partial class Наполненность
+    [Table("Наполненность")]
+    public partial class Fullness
     {
+        [Column("Id")]
         public int Id { get; set; }
-        public string Наполненность1 { get; set; } = null!;
-        public int Надбавка { get; set; }
+        [Column("Наполненность")]
+        public string FullnessName { get; set; } = null!;
+        [Column("Надбавка")]
+        public int Allowance { get; set; }
     }
 }

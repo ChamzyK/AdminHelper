@@ -1,15 +1,23 @@
-﻿namespace AdminHelper.models.entities
-{
-    public partial class Роль
-    {
-        public int Id { get; set; }
-        public int? Название { get; set; }
-        public int? IdСпектакль { get; set; }
-        public int? IdАктер { get; set; }
-        public int? Ставка { get; set; }
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-        public virtual Актер? IdАктерNavigation { get; set; }
-        public virtual Спектакль? IdСпектакльNavigation { get; set; }
-        public virtual ТипРоли? НазваниеNavigation { get; set; }
+namespace AdminHelper.models.entities
+{
+    [Table("Роль")]
+    public partial class Role
+    {
+        [Column("Id")]
+        public int Id { get; set; }
+        [Column("Название")]
+        public int? Name { get; set; }
+        [Column("IdСпектакль")]
+        public int? SpectacleId { get; set; }
+        [Column("IdАктер")]
+        public int? ActorId { get; set; }
+        [Column("Ставка")]
+        public int? Rate { get; set; }
+
+        public virtual Actor? ActorIdNavigation { get; set; }
+        public virtual Spectacle? SpectacleIdNavigation { get; set; }
+        public virtual RoleType? NameNavigation { get; set; }
     }
 }
