@@ -22,5 +22,8 @@ namespace AdminHelper.models.entities
 
         [Column("Роль")]
         public virtual ICollection<Role> Roles { get; set; }
+
+        [NotMapped]
+        public int Salary { get; set; }
     }
 }

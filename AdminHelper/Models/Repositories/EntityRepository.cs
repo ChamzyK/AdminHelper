@@ -32,17 +32,7 @@ namespace AdminHelper.Models.Repositories
             return _set.Update(entity).Entity;
         }
 
-        public bool Delete(int id) => Delete(Read(id));
-
-        private bool Delete(TEntity? entity)
-        {
-            if (entity == null)
-            {
-                return false;
-            }
-            _set.Remove(entity);
-            return true;
-        }
+        public void Delete(TEntity entity) => _set.Remove(entity);
 
         public void SaveChanges() => _context.SaveChanges();
     }

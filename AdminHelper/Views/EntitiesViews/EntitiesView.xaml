@@ -6,8 +6,8 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
         <ContentControl 
@@ -42,12 +42,14 @@
                 Rows="1">
 
             <Button
-                    Content="Обновить"
-                    Command="{Binding RefreshListCommand}"/>
+                Content="Обновить"
+                Command="{Binding RefreshListCommand}"
+                Style="{StaticResource DefaultButtonStyle}"/>
 
             <Button
-                    Content="Сохранить изменения"
-                    Command="{Binding SaveChangesCommand}"/>
+                Content="Сохранить изменения"
+                Command="{Binding SaveChangesCommand}"
+                Style="{StaticResource DefaultButtonStyle}"/>
 
         </UniformGrid>
     </Grid>

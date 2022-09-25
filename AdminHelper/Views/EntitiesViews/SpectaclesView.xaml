@@ -4,9 +4,25 @@
     <DataGrid ItemsSource="{Binding Entities}"
                   AutoGenerateColumns="False">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
-            <DataGridTextColumn Binding="{Binding Name}" Header="Название"/>
-            <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
+            <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время" Width="*"/>
+
+            <DataGridTemplateColumn Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Удалить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

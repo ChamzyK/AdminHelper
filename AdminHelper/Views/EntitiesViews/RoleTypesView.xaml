@@ -2,10 +2,26 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DataGrid ItemsSource="{Binding Entities}"
-                  AutoGenerateColumns="False">
+              Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
-            <DataGridTextColumn Binding="{Binding Name}" Header="Название роли"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding Name}" Header="Название роли" Width="*"/>
+
+            <DataGridTemplateColumn Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Удалить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

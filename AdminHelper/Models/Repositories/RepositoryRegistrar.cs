@@ -6,7 +6,7 @@ namespace AdminHelper.Models.Repositories
     public static class RepositoryRegistrar
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services) =>
-            services.AddSingleton<IRepository<Actor>, EntityRepository<Actor>>()
+            services.AddSingleton<IRepository<Actor>, ActorRepository>()
                 .AddSingleton<IRepository<Role>, EntityRepository<Role>>()
                 .AddSingleton<IRepository<Fullness>, EntityRepository<Fullness>>()
                 .AddSingleton<IRepository<RoleType>, EntityRepository<RoleType>>()

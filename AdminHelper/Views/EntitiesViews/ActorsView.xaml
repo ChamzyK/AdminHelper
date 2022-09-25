@@ -1,13 +1,32 @@
 ﻿<UserControl x:Class="AdminHelper.Views.EntitiesViews.ActorsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DataGrid ItemsSource="{Binding Entities}"
-                  AutoGenerateColumns="False">
+    
+    <DataGrid
+        ItemsSource="{Binding Entities}"
+        Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
-            <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия"/>
-            <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя"/>
-            <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True" Width="*" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия" Width="*"/>
+            <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" Width="*"/>
+            <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество"  Width="*"/>
+            <DataGridTextColumn Binding="{Binding Salary}" Header="Зарплата"  Width="*"/>
+
+            <DataGridTemplateColumn Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Удалить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

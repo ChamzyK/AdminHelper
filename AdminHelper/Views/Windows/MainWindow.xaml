@@ -7,72 +7,91 @@
         xmlns:ev="clr-namespace:AdminHelper.Views.EntitiesViews"
         
         Title="{Binding Title}" 
-        Height="650" Width="850"
-        MinHeight="550" MinWidth="650"
+        Height="600" Width="750"
+        MinHeight="550" MinWidth="700"
         
-        DataContext="{Binding Source={StaticResource Locator},Path=MainViewModel}">
+        DataContext="{Binding Source={StaticResource Locator},Path=MainViewModel}"
+        FontSize="{StaticResource SmallFontSize}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel
-            Grid.Column="0">
+        
+        <Border 
+            Grid.Column="0"
+            Style="{StaticResource DefaultBorderStyle}">
+            <UniformGrid
+                Grid.Column="0"
+                Columns="1">
 
-            <StackPanel.Resources>
-                <Style TargetType="Button">
-                    <Setter Property="Command" Value="{Binding ChangeViewModelCommand}"/>
-                </Style>
-            </StackPanel.Resources>
+                <UniformGrid.Resources>
+                    <Style TargetType="Button"  BasedOn="{StaticResource DefaultButtonStyle}">
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="FontSize" Value="{StaticResource MediumFontSize}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Command" Value="{Binding ChangeViewModelCommand}"/>
+                    </Style>
+                </UniformGrid.Resources>
 
-            <Label Content="Меню"/>
-            <Separator/>
+                <TextBlock 
+                    Text="Меню"
+                    Style="{StaticResource DefaultTextBlockStyle}"
+                    FontSize="{StaticResource BigFontSize}"/>
 
-            <Button
-                Content="Задание"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=MainViewModel}"/>
-            <Separator/>
-            <Button
-                Content="Спектакли"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=SpectaclesViewModel}"/>
-            <Button 
-                Content="Актеры"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=ActorsViewModel}"/>
-            <Button 
-                Content="Роли"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=RolesViewModel}"/>
-            <Button 
-                Content="Тип роли"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=RoleTypesViewModel}"/>
-            <Button 
-                Content="Наполненность"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=FullnessViewModel}"/>
-        </StackPanel>
+                <Button
+                    Content="Задание"
+                    CommandParameter="{Binding Source={StaticResource Locator}, Path=MainViewModel}"/>
+                <Button
+                    Content="Спектакли"
+                    CommandParameter="{Binding Source={StaticResource Locator}, Path=SpectaclesViewModel}"/>
+                <Button 
+                    Content="Актеры"
+                    CommandParameter="{Binding Source={StaticResource Locator}, Path=ActorsViewModel}"/>
+                <Button 
+                    Content="Роли"
+                    CommandParameter="{Binding Source={StaticResource Locator}, Path=RolesViewModel}"/>
+                <Button 
+                    Content="Тип роли"
+                    CommandParameter="{Binding Source={StaticResource Locator}, Path=RoleTypesViewModel}"/>
+                <Button 
+                    Content="Наполненность"
+                    CommandParameter="{Binding Source={StaticResource Locator}, Path=FullnessViewModel}"/>
 
-        <ContentControl 
+                <ContentControl/>
+            </UniformGrid>
+        </Border>
+
+        <Border 
             Grid.Column="1"
-            DataContext="{Binding CurrentViewModel}">
+            Style="{StaticResource DefaultBorderStyle}">
+            <ContentControl 
+                DataContext="{Binding CurrentViewModel}">
 
-            <ContentControl.Resources>
+                <ContentControl.Resources>
 
-                <DataTemplate DataType="{x:Type vm:MainViewModel}">
-                    <sv:HomeView/>
-                </DataTemplate>
-                
-                <DataTemplate DataType="{x:Type svm:LoadingViewModel}">
-                    <sv:LoadingView/>
-                </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:MainViewModel}">
+                        <sv:HomeView/>
+                    </DataTemplate>
 
-                <DataTemplate DataType="{x:Type svm:ViewModelBase}">
-                    <ev:EntitiesView/>
-                </DataTemplate>
+                    <DataTemplate DataType="{x:Type svm:LoadingViewModel}">
+                        <sv:LoadingView/>
+                    </DataTemplate>
 
-            </ContentControl.Resources>
-            
-            <ContentPresenter
-                Grid.Row="0"
-                Content="{Binding}"/>
-        </ContentControl>
+                    <DataTemplate DataType="{x:Type svm:ViewModelBase}">
+                        <ev:EntitiesView/>
+                    </DataTemplate>
 
+                </ContentControl.Resources>
+
+                <ContentPresenter
+                    Grid.Row="0"
+                    Content="{Binding}"/>
+            </ContentControl>
+        </Border>
+        
     </Grid>
 </Window>

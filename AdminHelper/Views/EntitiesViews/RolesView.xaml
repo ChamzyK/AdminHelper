@@ -2,13 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DataGrid ItemsSource="{Binding Entities}"
-                  AutoGenerateColumns="False">
+              Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
-            <DataGridTextColumn Binding="{Binding Name}" Header="Название"/>
-            <DataGridTextColumn Binding="{Binding SpectacleId}" Header="Спектакль"/>
-            <DataGridTextColumn Binding="{Binding ActorId}" Header="Актер"/>
-            <DataGridTextColumn Binding="{Binding Rate}" Header="Ставка"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
+            <DataGridTextColumn Binding="{Binding SpectacleId}" Header="Спектакль" Width="*"/>
+            <DataGridTextColumn Binding="{Binding ActorId}" Header="Актер" Width="*"/>
+            <DataGridTextColumn Binding="{Binding Rate}" Header="Ставка" Width="*"/>
+
+            <DataGridTemplateColumn Width="*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Удалить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

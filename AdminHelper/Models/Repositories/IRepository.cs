@@ -9,7 +9,7 @@ namespace AdminHelper.Models.Repositories
         TEntity? Read(int id);
         ObservableCollection<TEntity> Read();
         TEntity Update(TEntity entity);
-        bool Delete(int id);
+        void Delete(TEntity entity);
 
         void SaveChanges();
     }
