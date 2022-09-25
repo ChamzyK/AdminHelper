@@ -58,11 +58,15 @@
                 <DataTemplate DataType="{x:Type vm:MainViewModel}">
                     <sv:HomeView/>
                 </DataTemplate>
+                
+                <DataTemplate DataType="{x:Type svm:LoadingViewModel}">
+                    <sv:LoadingView/>
+                </DataTemplate>
 
                 <DataTemplate DataType="{x:Type svm:ViewModelBase}">
                     <ev:EntitiesView/>
                 </DataTemplate>
-                
+
             </ContentControl.Resources>
             
             <ContentPresenter

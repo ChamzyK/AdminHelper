@@ -7,7 +7,10 @@ namespace AdminHelper.ViewModels.Shared
     public static class ViewModelRegistrar
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) =>
-            services.AddSingleton<MainViewModel>()
+            services
+                .AddSingleton<MainViewModel>()
+                .AddSingleton<LoadingViewModel>()
+                .AddSingleton<ExceptionViewModel>()
                 .AddSingleton<EntityViewModel<Spectacle>, SpectaclesViewModel>()
                 .AddSingleton<EntityViewModel<RoleType>, RoleTypesViewModel>()
                 .AddSingleton<EntityViewModel<Role>, RolesViewModel>()

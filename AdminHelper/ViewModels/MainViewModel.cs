@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using AdminHelper.Infrastructure.Commands;
 using AdminHelper.ViewModels.Shared;
 
@@ -9,6 +10,7 @@ namespace AdminHelper.ViewModels
         private string? _title;
         private ViewModelBase? _currentViewModel;
         private ICommand? _changeViewModelCommand;
+        private readonly ViewModelBase _loadingViewModel;
 
         public string? Title
         {
@@ -26,8 +28,9 @@ namespace AdminHelper.ViewModels
             set => SetField(ref _changeViewModelCommand, value);
         }
 
-        public MainViewModel()
+        public MainViewModel(LoadingViewModel loadingViewModel)
         {
+            _loadingViewModel = loadingViewModel;
             CurrentViewModel = this;
             Title = @"Театр ""На левом берегу""";
 
@@ -37,10 +40,14 @@ namespace AdminHelper.ViewModels
         private bool CanChangeViewModel(object? arg) => 
             arg is ViewModelBase viewModel && 
             viewModel != CurrentViewModel;
-        private void ChangeViewModel(object? obj)
+        private async void ChangeViewModel(object? obj)
         {
-            var viewModel = (ViewModelBase)obj!;
-            CurrentViewModel = viewModel;
+            CurrentViewModel = _loadingViewModel;
+            await Task.Run(() => 
+            {
+                var viewModel = (ViewModelBase)obj!;
+                CurrentViewModel = viewModel; 
+            });
         }
     }
 }

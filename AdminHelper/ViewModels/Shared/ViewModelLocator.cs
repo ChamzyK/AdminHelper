@@ -7,6 +7,7 @@ namespace AdminHelper.ViewModels.Shared
     public class ViewModelLocator
     {
         public static MainViewModel MainViewModel => App.Services.GetRequiredService<MainViewModel>();
+        public static LoadingViewModel LoadingViewModel => App.Services.GetRequiredService<LoadingViewModel>();
 
         public static EntityViewModel<Spectacle> SpectaclesViewModel => App.Services.GetRequiredService<EntityViewModel<Spectacle>>();
         public static EntityViewModel<RoleType> RoleTypesViewModel => App.Services.GetRequiredService<EntityViewModel<RoleType>>();
