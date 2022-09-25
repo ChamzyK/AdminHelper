@@ -8,11 +8,10 @@ namespace AdminHelper.ViewModels.Shared
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) =>
             services.AddSingleton<MainViewModel>()
-                .AddSingleton<EntityViewModel<Spectacle>,SpectaclesViewModel>()
+                .AddSingleton<EntityViewModel<Spectacle>, SpectaclesViewModel>()
                 .AddSingleton<EntityViewModel<RoleType>, RoleTypesViewModel>()
                 .AddSingleton<EntityViewModel<Role>, RolesViewModel>()
                 .AddSingleton<EntityViewModel<Fullness>, FullnessViewModel>()
-                .AddSingleton<EntityViewModel<Actor>, ActorsViewModel>()
-                .AddSingleton<ViewModelBase>();
+                .AddSingleton<EntityViewModel<Actor>, ActorsViewModel>();
     }
 }

@@ -1,11 +1,11 @@
 ﻿<Window x:Class="AdminHelper.Views.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:entitiesViewModels="clr-namespace:AdminHelper.ViewModels.EntitiesViewModels"
-
-        mc:Ignorable="d"
+        xmlns:svm="clr-namespace:AdminHelper.ViewModels.Shared"
+        xmlns:sv="clr-namespace:AdminHelper.Views.Shared"
+        xmlns:vm="clr-namespace:AdminHelper.ViewModels"
+        xmlns:ev="clr-namespace:AdminHelper.Views.EntitiesViews"
+        
         Title="{Binding Title}" 
         Height="650" Width="850"
         MinHeight="550" MinWidth="650"
@@ -30,7 +30,7 @@
 
             <Button
                 Content="Задание"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=ViewModelBase}"/>
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=MainViewModel}"/>
             <Separator/>
             <Button
                 Content="Спектакли"
@@ -49,11 +49,26 @@
                 CommandParameter="{Binding Source={StaticResource Locator}, Path=FullnessViewModel}"/>
         </StackPanel>
 
-        <Grid 
+        <ContentControl 
             Grid.Column="1"
             DataContext="{Binding CurrentViewModel}">
-            <ContentPresenter Content="{Binding}"/>
-        </Grid>
+
+            <ContentControl.Resources>
+
+                <DataTemplate DataType="{x:Type vm:MainViewModel}">
+                    <sv:HomeView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type svm:ViewModelBase}">
+                    <ev:EntitiesView/>
+                </DataTemplate>
+                
+            </ContentControl.Resources>
+            
+            <ContentPresenter
+                Grid.Row="0"
+                Content="{Binding}"/>
+        </ContentControl>
 
     </Grid>
 </Window>

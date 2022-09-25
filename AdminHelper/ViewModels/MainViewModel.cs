@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using AdminHelper.Infrastructure.Commands;
-using AdminHelper.ViewModels.Interfaces;
 using AdminHelper.ViewModels.Shared;
 
 namespace AdminHelper.ViewModels
@@ -27,9 +26,9 @@ namespace AdminHelper.ViewModels
             set => SetField(ref _changeViewModelCommand, value);
         }
 
-        public MainViewModel(ViewModelBase viewModelBase)
+        public MainViewModel()
         {
-            CurrentViewModel = viewModelBase;
+            CurrentViewModel = this;
             Title = @"Театр ""На левом берегу""";
 
             ChangeViewModelCommand = new RelayCommand(ChangeViewModel, CanChangeViewModel);
@@ -41,10 +40,6 @@ namespace AdminHelper.ViewModels
         private void ChangeViewModel(object? obj)
         {
             var viewModel = (ViewModelBase)obj!;
-            if(obj is IRefreshable refreshable)
-            {
-                refreshable.Refresh();
-            }
             CurrentViewModel = viewModel;
         }
     }

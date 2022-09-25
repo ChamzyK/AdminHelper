@@ -21,6 +21,7 @@ namespace AdminHelper.Models.Repositories
         public TEntity? Read(int id) => _set.Find(id);
         public ObservableCollection<TEntity> Read()
         {
+            _context.ChangeTracker.Clear();
             _set.Load();
             return _set.Local.ToObservableCollection();
         }
