@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="AdminHelper.Views.EntitiesViews.RolesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataGrid ItemsSource="{Binding Entities}"
+                  AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
+            <DataGridTextColumn Binding="{Binding Name}" Header="Название"/>
+            <DataGridTextColumn Binding="{Binding SpectacleId}" Header="Спектакль"/>
+            <DataGridTextColumn Binding="{Binding ActorId}" Header="Актер"/>
+            <DataGridTextColumn Binding="{Binding Rate}" Header="Ставка"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

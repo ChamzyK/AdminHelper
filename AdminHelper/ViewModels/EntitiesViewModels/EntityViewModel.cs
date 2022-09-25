@@ -2,11 +2,12 @@
 using System.Windows.Input;
 using AdminHelper.Infrastructure.Commands;
 using AdminHelper.Models.Repositories;
+using AdminHelper.ViewModels.Interfaces;
 using AdminHelper.ViewModels.Shared;
 
 namespace AdminHelper.ViewModels.EntitiesViewModels
 {
-    public abstract class EntityViewModel<TEntity> : ViewModelBase 
+    public abstract class EntityViewModel<TEntity> : ViewModelBase, IRefreshable
         where TEntity : class
     {
         protected EntityViewModel(IRepository<TEntity> repository)
@@ -23,10 +24,16 @@ namespace AdminHelper.ViewModels.EntitiesViewModels
             set => SetField(ref _entities, value);
         }
 
-        public ICommand RefreshListCommand => new RelayCommand(Refresh);
+        public ICommand RefreshListCommand => new RelayCommand(obj => Refresh());
         public ICommand CreateCommand => new RelayCommand(Create, CanCreate);
         public ICommand UpdateCommand => new RelayCommand(Update, CanUpdate);
         public ICommand DeleteCommand => new RelayCommand(Delete, CanDelete);
+        public ICommand SaveChangesCommand => new RelayCommand(SaveChanges);
+
+        private void SaveChanges(object? obj)
+        {
+            _repository.SaveChanges();
+        }
 
         private void Create(object? obj)
         {
@@ -52,6 +59,6 @@ namespace AdminHelper.ViewModels.EntitiesViewModels
         }
         private static bool CanUpdate(object? arg) => arg is TEntity;
 
-        private void Refresh(object? obj) => Entities = _repository.Read();
+        public void Refresh() => Entities = _repository.Read();
     }
 }

@@ -9,10 +9,10 @@ namespace AdminHelper.ViewModels.Shared
         public static ViewModelBase ViewModelBase => App.Services.GetRequiredService<ViewModelBase>();
         public static MainViewModel MainViewModel => App.Services.GetRequiredService<MainViewModel>();
 
-        public static EntityViewModel<Spectacle> SpectacleViewModel => App.Services.GetRequiredService<EntityViewModel<Spectacle>>();
-        public static EntityViewModel<RoleType> RoleTypeViewModel => App.Services.GetRequiredService<EntityViewModel<RoleType>>();
-        public static EntityViewModel<Genre> GenreViewModel => App.Services.GetRequiredService<EntityViewModel<Genre>>();
-        public static EntityViewModel<Director> DirectorViewModel => App.Services.GetRequiredService<EntityViewModel<Director>>();
-        public static EntityViewModel<Actor> ActorViewModel => App.Services.GetRequiredService<EntityViewModel<Actor>>();
+        public static EntityViewModel<Spectacle> SpectaclesViewModel => App.Services.GetRequiredService<EntityViewModel<Spectacle>>();
+        public static EntityViewModel<RoleType> RoleTypesViewModel => App.Services.GetRequiredService<EntityViewModel<RoleType>>();
+        public static EntityViewModel<Role> RolesViewModel => App.Services.GetRequiredService<EntityViewModel<Role>>();
+        public static EntityViewModel<Fullness> FullnessViewModel => App.Services.GetRequiredService<EntityViewModel<Fullness>>();
+        public static EntityViewModel<Actor> ActorsViewModel => App.Services.GetRequiredService<EntityViewModel<Actor>>();
     }
 }

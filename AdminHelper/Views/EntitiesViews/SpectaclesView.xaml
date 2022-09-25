@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="AdminHelper.Views.EntitiesViews.SpectaclesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataGrid ItemsSource="{Binding Entities}"
+                  AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
+            <DataGridTextColumn Binding="{Binding Name}" Header="Название"/>
+            <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

@@ -34,19 +34,19 @@
             <Separator/>
             <Button
                 Content="Спектакли"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=SpectacleViewModel}"/>
-            <Button 
-                Content="Жанры"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=GenreViewModel}"/>
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=SpectaclesViewModel}"/>
             <Button 
                 Content="Актеры"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=ActorViewModel}"/>
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=ActorsViewModel}"/>
+            <Button 
+                Content="Роли"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=RolesViewModel}"/>
             <Button 
                 Content="Тип роли"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=RoleTypeViewModel}"/>
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=RoleTypesViewModel}"/>
             <Button 
-                Content="Режиссеры"
-                CommandParameter="{Binding Source={StaticResource Locator}, Path=DirectorViewModel}"/>
+                Content="Наполненность"
+                CommandParameter="{Binding Source={StaticResource Locator}, Path=FullnessViewModel}"/>
         </StackPanel>
 
         <Grid 

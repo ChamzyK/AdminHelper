@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Entities\" />
-    <Folder Include="Views\EntitiesViews\" />
   </ItemGroup>
 
 </Project>

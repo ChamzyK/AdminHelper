@@ -3,9 +3,9 @@ using AdminHelper.Models.Repositories;
 
 namespace AdminHelper.ViewModels.EntitiesViewModels
 {
-    public class ActorViewModel : EntityViewModel<Actor>
+    public class RolesViewModel : EntityViewModel<Role>
     {
-        public ActorViewModel(IRepository<Actor> repository) : base(repository)
+        public RolesViewModel(IRepository<Role> repository) : base(repository)
         {
         }
     }

@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="AdminHelper.Views.EntitiesViews.RoleTypesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataGrid ItemsSource="{Binding Entities}"
+                  AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True"/>
+            <DataGridTextColumn Binding="{Binding Name}" Header="Название роли"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>
