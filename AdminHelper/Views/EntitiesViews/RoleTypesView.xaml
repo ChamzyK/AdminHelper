@@ -7,7 +7,7 @@
             <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
             <DataGridTextColumn Binding="{Binding Name}" Header="Название роли" Width="*"/>
 
-            <DataGridTemplateColumn Width="*">
+            <DataGridTemplateColumn  Width="75">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <Button

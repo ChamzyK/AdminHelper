@@ -1,7 +1,5 @@
 ﻿using AdminHelper.models.entities;
 using AdminHelper.Models.DbContexts;
-using AdminHelper.Views.EntitiesViews;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -54,8 +52,7 @@ namespace AdminHelper.Models.Repositories
 
             return actor;
         }
-
-        private static int CalcRates(Actor actor) => actor.Roles.Sum(role => role.Rate) ?? 0;
+        private int CalcRates(Actor actor) => actor.Roles.Sum(role => role.Rate) ?? 0;
         private int CalcAllowances(Actor actor)
         {
             var allowances = 0;

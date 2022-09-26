@@ -1,25 +1,28 @@
 ﻿using System.Collections.ObjectModel;
-using System.Net.Http.Headers;
 using System.Windows.Input;
+using System.Windows.Threading;
 using AdminHelper.Infrastructure.Commands;
 using AdminHelper.Models.Repositories;
+using AdminHelper.ViewModels.Interfaces;
 using AdminHelper.ViewModels.Shared;
 
 namespace AdminHelper.ViewModels.EntitiesViewModels
 {
-    public abstract class EntityViewModel<TEntity> : ViewModelBase
+    public abstract class EntityViewModel<TEntity> : ViewModelBase, IRefreshable
         where TEntity : class
     {
         private ICommand? _refreshListCommand;
         private ICommand? _deleteCommand;
         private ICommand? _saveChangesCommand;
+        private Dispatcher _dispatcher;
 
         protected EntityViewModel(IRepository<TEntity> repository)
         {
             _repository = repository;
-            Refresh(null);
+            _dispatcher = Dispatcher.CurrentDispatcher;
+            Refresh();
 
-            RefreshListCommand = new RelayCommand(Refresh);
+            RefreshListCommand = new RelayCommand(obj => Refresh());
             DeleteCommand = new RelayCommand(Delete);
             SaveChangesCommand = new RelayCommand(SaveChanges);
         }
@@ -53,7 +56,7 @@ namespace AdminHelper.ViewModels.EntitiesViewModels
         private void SaveChanges(object? obj)
         {
             _repository.SaveChanges();
-            Refresh(null);
+            Refresh();
         }
 
         private void Delete(object? obj)
@@ -61,12 +64,12 @@ namespace AdminHelper.ViewModels.EntitiesViewModels
             var entity = (TEntity)obj!;
             _repository.Delete(entity);
             _repository.SaveChanges();
-            Entities?.Remove(entity);
+            Refresh();
         }
 
-        private void Refresh(object? obj)
+        public virtual void Refresh()
         {
-            Entities?.Clear();
+            _dispatcher.Invoke(() => Entities?.Clear());
             Entities = _repository.Read();
         } 
     }

@@ -7,8 +7,8 @@
         xmlns:ev="clr-namespace:AdminHelper.Views.EntitiesViews"
         
         Title="{Binding Title}" 
-        Height="600" Width="750"
-        MinHeight="550" MinWidth="700"
+        Height="600" Width="875"
+        MinHeight="550" MinWidth="850"
         
         DataContext="{Binding Source={StaticResource Locator},Path=MainViewModel}"
         FontSize="{StaticResource SmallFontSize}">

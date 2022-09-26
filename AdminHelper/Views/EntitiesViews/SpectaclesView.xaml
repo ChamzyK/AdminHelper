@@ -6,9 +6,9 @@
         <DataGrid.Columns>
             <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
             <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
-            <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время" Width="*"/>
+            <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время"/>
 
-            <DataGridTemplateColumn Width="*">
+            <DataGridTemplateColumn Width="75">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <Button

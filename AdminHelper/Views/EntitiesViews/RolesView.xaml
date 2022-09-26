@@ -5,12 +5,12 @@
               Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
             <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
-            <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
-            <DataGridTextColumn Binding="{Binding SpectacleId}" Header="Спектакль" Width="*"/>
-            <DataGridTextColumn Binding="{Binding ActorId}" Header="Актер" Width="*"/>
-            <DataGridTextColumn Binding="{Binding Rate}" Header="Ставка" Width="*"/>
+            <DataGridTextColumn Binding="{Binding ActorIdNavigation.LastName}" Header="Актер" Width="*"/>
+            <DataGridTextColumn Binding="{Binding SpectacleIdNavigation.Name}" Header="Спектакль" Width="*"/>
+            <DataGridTextColumn Binding="{Binding NameNavigation.Name}" Header="Тип роли"/>
+            <DataGridTextColumn Binding="{Binding Rate}" Header="Ставка"/>
 
-            <DataGridTemplateColumn Width="*">
+            <DataGridTemplateColumn Width="75">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <Button

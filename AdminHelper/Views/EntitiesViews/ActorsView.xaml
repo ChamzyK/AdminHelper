@@ -6,13 +6,13 @@
         ItemsSource="{Binding Entities}"
         Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True" Width="*" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id" IsReadOnly="True" Visibility="Hidden"/>
             <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия" Width="*"/>
             <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" Width="*"/>
-            <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество"  Width="*"/>
-            <DataGridTextColumn Binding="{Binding Salary}" Header="Зарплата"  Width="*"/>
+            <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество" Width="*"/>
+            <DataGridTextColumn Binding="{Binding Salary}" Header="Зарплата"/>
 
-            <DataGridTemplateColumn Width="*">
+            <DataGridTemplateColumn Width="75">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <Button
