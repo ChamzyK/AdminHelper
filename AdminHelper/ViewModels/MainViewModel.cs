@@ -1,19 +1,22 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Threading;
-using AdminHelper.Infrastructure.Commands;
-using AdminHelper.ViewModels.Interfaces;
-using AdminHelper.ViewModels.Shared;
+﻿using AdminHelper.ViewModels.Shared;
+using System.Threading.Tasks;
 
 namespace AdminHelper.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        public MainViewModel(LoadingViewModel loadingViewModel)
+        {
+            _loadingViewModel = loadingViewModel;
+
+            CurrentViewModel = this;
+            Title = @"Театр ""На левом берегу""";
+        }
+
+        private readonly LoadingViewModel _loadingViewModel;
+
         private string? _title;
         private ViewModelBase? _currentViewModel;
-        private ICommand? _changeViewModelCommand;
-        private readonly ViewModelBase _loadingViewModel;
-        private Dispatcher _dispatcher;
 
         public string? Title
         {
@@ -25,37 +28,21 @@ namespace AdminHelper.ViewModels
             get => _currentViewModel!;
             set => SetField(ref _currentViewModel, value);
         }
-        public ICommand ChangeViewModelCommand
-        {
-            get => _changeViewModelCommand!;
-            set => SetField(ref _changeViewModelCommand, value);
-        }
 
-        public MainViewModel(LoadingViewModel loadingViewModel)
-        {
-            _loadingViewModel = loadingViewModel;
-            _dispatcher = Dispatcher.CurrentDispatcher;
-
-            CurrentViewModel = this;
-            Title = @"Театр ""На левом берегу""";
-            ChangeViewModelCommand = new RelayCommand(ChangeViewModel, CanChangeViewModel);
-        }
-
-        private bool CanChangeViewModel(object? arg) => 
-            arg is ViewModelBase viewModel && 
-            viewModel != CurrentViewModel;
-        private async void ChangeViewModel(object? obj)
+        public void ShowLoading()
         {
             CurrentViewModel = _loadingViewModel;
-            await Task.Run(() => 
+        }
+        public async void ChangeContent(object? obj)
+        {
+            await Task.Run(() =>
             {
-                if(obj is IRefreshable refreshable)
-                {
-                    refreshable.Refresh();
-                }
                 var viewModel = (ViewModelBase)obj!;
-                CurrentViewModel = viewModel; 
+                CurrentViewModel = viewModel;
             });
         }
+        public bool CanChangeContent(object? arg) => 
+            arg is ViewModelBase viewModel &&
+            viewModel != CurrentViewModel;
     }
 }

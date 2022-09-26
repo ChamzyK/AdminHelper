@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace AdminHelper.Models.Repositories
 {
@@ -7,7 +7,7 @@ namespace AdminHelper.Models.Repositories
     {
         void Create(TEntity entity);
         TEntity? Read(int id);
-        ObservableCollection<TEntity> Read();
+        IEnumerable<TEntity> Read();
         TEntity Update(TEntity entity);
         void Delete(TEntity entity);
 

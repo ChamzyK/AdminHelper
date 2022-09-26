@@ -2,13 +2,41 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DataGrid ItemsSource="{Binding Entities}"
-              Style="{StaticResource DefaultDataGridStyle}"
-              CanUserAddRows="False"
-              CanUserDeleteRows="False">
+              Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
-            <DataGridTextColumn Binding="{Binding FullnessName}" Header="Наполненность" IsReadOnly="True" Width="*"/>
-            <DataGridTextColumn Binding="{Binding Allowance}" Header="Надбавка"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
+            <DataGridTextColumn Binding="{Binding FullnessName}" Header="Наполненность" Width="*"/>
+            <DataGridTextColumn Binding="{Binding Allowance}" Header="Надбавка" Width="*"/>
+
+            <DataGridTemplateColumn Width="75">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Изменить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.EditCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn Width="75">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Удалить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.DeleteCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="AdminHelper.Views.EntityViews.EntityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:entityvm="clr-namespace:AdminHelper.ViewModels.EntityViewModels.Extends"
+             xmlns:entityv="clr-namespace:AdminHelper.Views.EntityViews">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl Grid.Row="0">
+            <ContentControl.Resources>
+                
+                <DataTemplate DataType="{x:Type entityvm:ActorViewModel}">
+                    <entityv:ActorView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type entityvm:FullnessViewModel}">
+                    <entityv:FullnessView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type entityvm:RoleViewModel}">
+                    <entityv:RoleView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type entityvm:RoleTypeViewModel}">
+                    <entityv:RoleTypeView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type entityvm:SpectacleViewModel}">
+                    <entityv:SpectacleView/>
+                </DataTemplate>
+
+            </ContentControl.Resources>
+                    <ContentPresenter Content="{Binding}"/>
+        </ContentControl>
+        
+        <UniformGrid 
+            Grid.Row="1"
+            Rows="1">
+            <Button
+                Content="Назад"
+                Style="{StaticResource DefaultButtonStyle}"
+                Command="{Binding GoBackCommand}"/>
+            <Button
+                Content="Сохранить"
+                Style="{StaticResource DefaultButtonStyle}"
+                Command="{Binding SaveCommand}"/>
+        </UniformGrid>
+        
+    </Grid>
+</UserControl>

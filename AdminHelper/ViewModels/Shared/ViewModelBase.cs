@@ -6,7 +6,7 @@ namespace AdminHelper.ViewModels.Shared
 {
     //базовый класс для всех остальных классов VM (ViewModel)
     //базовый потому что в нем идет реализация интерфейса INotifyPropertyChanged (реализация этого интерфейса необходима для работы с V (View) частью приложения)
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -14,7 +14,6 @@ namespace AdminHelper.ViewModels.Shared
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(field, value)) return false;

@@ -1,28 +1,19 @@
 ﻿using AdminHelper.models.entities;
 using AdminHelper.Models.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
 namespace AdminHelper.Models.Repositories
 {
-    public class ActorRepository : IRepository<Actor>
+    public class ActorRepository : EntityRepository<Actor>
     {
-        private readonly AdminHelperDbContext _context;
-        private readonly DbSet<Actor> _set;
-
-        public ActorRepository(AdminHelperDbContext context)
+        public ActorRepository(AdminHelperDbContext context) : base(context)
         {
-            _context = context;
-            _set = context.Set<Actor>();
         }
 
-        public void Create(Actor entity) => _set.Add(entity);
-
-        public void Delete(Actor entity) => _set.Remove(entity);
-
-        public Actor? Read(int id)
+        public override Actor? Read(int id)
         {
             var actor = _set.Find(id);
             if (actor == null)
@@ -32,16 +23,12 @@ namespace AdminHelper.Models.Repositories
             return SetSalary(actor);
         }
 
-        public ObservableCollection<Actor> Read()
+        public override IEnumerable<Actor> Read()
         {
             var actors = _context.Actors.Include(actor => actor.Roles).ToList();
             var actorsWithSalary = actors.Select(actor => SetSalary(actor));
-            return new ObservableCollection<Actor>(actorsWithSalary);
+            return actorsWithSalary;
         }
-
-        public void SaveChanges() => _context.SaveChanges();
-
-        public Actor Update(Actor entity) => _set.Update(entity).Entity;
 
         private Actor SetSalary(Actor actor)
         {

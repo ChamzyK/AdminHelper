@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace AdminHelper.Infrastructure.Commands.Base
 {
-    internal abstract class CommandBase : ICommand
+    public abstract class CommandBase : ICommand
     {
         private bool _executable = true;
         public bool Executable

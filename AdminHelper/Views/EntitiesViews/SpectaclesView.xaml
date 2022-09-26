@@ -1,12 +1,28 @@
 ﻿<UserControl x:Class="AdminHelper.Views.EntitiesViews.SpectaclesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DataGrid ItemsSource="{Binding Entities}"
-                  AutoGenerateColumns="False">
+    <DataGrid 
+        ItemsSource="{Binding Entities}"
+        Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
             <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
             <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время"/>
+
+            <DataGridTemplateColumn Width="75">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Изменить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.EditCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
 
             <DataGridTemplateColumn Width="75">
                 <DataGridTemplateColumn.CellTemplate>

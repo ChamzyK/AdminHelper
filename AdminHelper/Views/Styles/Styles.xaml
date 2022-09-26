@@ -57,6 +57,15 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
+    <Style 
+        x:Key="DefaultTextBoxStyle" 
+        TargetType="TextBox" 
+        BasedOn="{StaticResource DefaultElementStyle}">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
     <Style
         x:Key="DefaultDataGridStyle"
         TargetType="DataGrid">
@@ -64,6 +73,9 @@
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="EnableRowVirtualization" Value="True"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="IsReadOnly" Value="true"/>
     </Style>
 
     <Style 

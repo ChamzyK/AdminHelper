@@ -1,26 +1,17 @@
 ﻿using AdminHelper.models.entities;
 using AdminHelper.Models.DbContexts;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace AdminHelper.Models.Repositories
 {
-    public class RoleRepository : IRepository<Role>
+    public class RoleRepository : EntityRepository<Role>
     {
-        private readonly AdminHelperDbContext _context;
-        private readonly DbSet<Role> _set;
-
-        public RoleRepository(AdminHelperDbContext context)
+        public RoleRepository(AdminHelperDbContext context) : base(context)
         {
-            _context = context;
-            _set = context.Set<Role>();
         }
 
-        public void Create(Role entity) => _set.Add(entity);
-
-        public void Delete(Role entity) => _set.Remove(entity);
-
-        public Role? Read(int id)
+        public override Role? Read(int id)
         {
             var role = _set.Find(id);
             if (role == null)
@@ -30,17 +21,12 @@ namespace AdminHelper.Models.Repositories
             return role;
         }
 
-        public ObservableCollection<Role> Read()
+        public override IEnumerable<Role> Read()
         {
-            var roles = _context.Roles
+            return _context.Roles
                 .Include(role => role.SpectacleIdNavigation)
                 .Include(role => role.ActorIdNavigation)
                 .Include(role => role.NameNavigation);
-            return new ObservableCollection<Role>(roles);
         }
-
-        public void SaveChanges() => _context.SaveChanges();
-
-        public Role Update(Role entity) => _set.Update(entity).Entity;
     }
 }

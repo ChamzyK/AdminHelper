@@ -1,14 +1,30 @@
 ﻿<UserControl x:Class="AdminHelper.Views.EntitiesViews.RolesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DataGrid ItemsSource="{Binding Entities}"
-              Style="{StaticResource DefaultDataGridStyle}">
+    <DataGrid 
+        ItemsSource="{Binding Entities}"
+        Style="{StaticResource DefaultDataGridStyle}">
         <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden"/>
+            <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
             <DataGridTextColumn Binding="{Binding ActorIdNavigation.LastName}" Header="Актер" Width="*"/>
             <DataGridTextColumn Binding="{Binding SpectacleIdNavigation.Name}" Header="Спектакль" Width="*"/>
             <DataGridTextColumn Binding="{Binding NameNavigation.Name}" Header="Тип роли"/>
             <DataGridTextColumn Binding="{Binding Rate}" Header="Ставка"/>
+
+            <DataGridTemplateColumn Width="75">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button
+                            Content="Изменить"
+                            Command="{Binding 
+                                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                Path=DataContext.EditCommand}"
+                            CommandParameter="{Binding 
+                                RelativeSource={RelativeSource AncestorType=DataGrid},
+                                Path=SelectedItem}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
 
             <DataGridTemplateColumn Width="75">
                 <DataGridTemplateColumn.CellTemplate>
@@ -24,7 +40,7 @@
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-            
+
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

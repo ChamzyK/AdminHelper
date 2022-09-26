@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Validators\" />
     <Folder Include="Models\Entities\" />
   </ItemGroup>
 
