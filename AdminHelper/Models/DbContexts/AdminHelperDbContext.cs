@@ -1,4 +1,5 @@
-﻿using AdminHelper.models.entities;
+﻿using AdminHelper.Infrastructure.Generators;
+using AdminHelper.models.entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminHelper.Models.DbContexts
@@ -16,7 +17,15 @@ namespace AdminHelper.Models.DbContexts
         public AdminHelperDbContext(DbContextOptions<AdminHelperDbContext> options)
             : base(options)
         {
+            Database.EnsureDeleted(); //удаление если она уже есть
             Database.EnsureCreated(); //создание бд если её нету в ядре бд
+
+            var generator = new EntityGenerator(this);
+            generator.AddActors();
+            generator.AddFullness();
+            generator.AddSpectacles();
+            generator.AddRoleTypes();
+            generator.AddRoles();
         }
 
         //далее - автосгенерированный код
