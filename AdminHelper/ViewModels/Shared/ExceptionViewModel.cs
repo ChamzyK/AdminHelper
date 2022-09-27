@@ -1,5 +1,4 @@
 ﻿using AdminHelper.Infrastructure.Commands;
-using System;
 using System.Windows.Input;
 
 namespace AdminHelper.ViewModels.Shared
@@ -21,7 +20,8 @@ namespace AdminHelper.ViewModels.Shared
 			set => SetField(ref _returnCommand, value);
 		}
 
-		public ExceptionViewModel(MainViewModel mainViewModel)
+        //С помощью  DI получаем MainViewModel
+        public ExceptionViewModel(MainViewModel mainViewModel)
 		{
             _mainViewModel = mainViewModel;
 			ExceptionText = "Ошибка!";

@@ -2,18 +2,27 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <UniformGrid 
-        Columns="1">
+    <UniformGrid Columns="1">
+
+        <TextBlock 
+            Text="Произошла ошибка в работе приложения"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource BigFontSize}"
+            TextAlignment="Center"/>
         
+        <Separator Margin="5"/>
         <TextBlock 
             Text="{Binding ExceptionText}"
             Style="{StaticResource DefaultTextBlockStyle}"
             FontSize="{StaticResource MediumFontSize}"/>
 
+        <Separator Margin="5"/>
+
         <Button
-            Content="На главную"
+            Content="Закрыть"
             Command="{Binding ReturnCommand}"
-            Style="{StaticResource DefaultButtonStyle}"/>
+            Style="{StaticResource DefaultButtonStyle}"
+            MaxHeight="75"/>
 
     </UniformGrid>
     

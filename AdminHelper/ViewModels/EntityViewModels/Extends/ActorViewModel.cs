@@ -1,7 +1,6 @@
 ﻿using AdminHelper.models.entities;
 using AdminHelper.Models;
-using AdminHelper.Models.Repositories;
-using System.Threading.Tasks;
+using AdminHelper.Models.Repositories.Shared;
 
 namespace AdminHelper.ViewModels.EntityViewModels.Extends
 {
@@ -39,16 +38,6 @@ namespace AdminHelper.ViewModels.EntityViewModels.Extends
             : base(mainViewModel, repository)
         {
             Entity ??= new Actor();
-        }
-
-        protected async override void Save(object? obj)
-        {
-            Repository.Update(Entity!);
-            Repository.SaveChanges();
-
-            MainViewModel.ShowLoading();
-            await Task.Run(EntitiesViewModel!.Refresh);
-            GoBack(obj);
         }
 
         protected override bool CanSave(object? arg) => Entity!.IsValid();

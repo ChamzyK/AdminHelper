@@ -4,10 +4,13 @@ using System.Runtime.CompilerServices;
 
 namespace AdminHelper.ViewModels.Shared
 {
+    //TODO: 3
     //базовый класс для всех остальных классов VM (ViewModel)
     //базовый потому что в нем идет реализация интерфейса INotifyPropertyChanged (реализация этого интерфейса необходима для работы с V (View) частью приложения)
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        //стандартная реализация интерфейса INotifyPropertyChanged (INPC), который представлен везде в интернете
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)

@@ -22,21 +22,6 @@
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-
-            <DataGridTemplateColumn Width="75">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button
-                            Content="Удалить"
-                            Command="{Binding 
-                                RelativeSource={RelativeSource AncestorType=UserControl}, 
-                                Path=DataContext.DeleteCommand}"
-                            CommandParameter="{Binding 
-                                RelativeSource={RelativeSource AncestorType=DataGrid},
-                                Path=SelectedItem}"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

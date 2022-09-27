@@ -13,7 +13,7 @@ namespace AdminHelper.ViewModels.EntitiesViewModels
             RefreshCommand = new RelayCommand(obj => Refresh());
             DeleteCommand = new RelayCommand(Delete, CanDelete);
             EditCommand = new RelayCommand(Edit, CanEdit);
-            CreateCommand = new RelayCommand(Create);
+            CreateCommand = new RelayCommand(Create, CanCreate);
         }
 
         private readonly MainViewModel _mainViewModel;
@@ -53,5 +53,6 @@ namespace AdminHelper.ViewModels.EntitiesViewModels
 
         protected abstract bool CanDelete(object? arg);
         protected abstract bool CanEdit(object? arg);
+        protected abstract bool CanCreate(object? arg);
     }
 }

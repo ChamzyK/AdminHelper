@@ -1,5 +1,6 @@
 ﻿using AdminHelper.models.entities;
 using AdminHelper.Models.DbContexts;
+using AdminHelper.Models.Repositories.Shared;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Data;
@@ -30,6 +31,7 @@ namespace AdminHelper.Models.Repositories
             return actorsWithSalary;
         }
 
+        //Высчитывание зарплаты (аналогично коду в бд, который был представлен заранее)
         private Actor SetSalary(Actor actor)
         {
             var rates = CalcRates(actor);

@@ -1,7 +1,31 @@
 ﻿<UserControl x:Class="AdminHelper.Views.EntityViews.FullnessView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <TextBlock
+            Text="{Binding ActionText}"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource BigFontSize}"/>
+
+        <Separator Margin="5"/>
+
+        <TextBlock
+            Text="Показатель наполненности:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <TextBlock
+            Text="{Binding FullnessName}"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+
+        <TextBlock
+            Text="Введите надбавку:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <TextBox
+            Text="{Binding Allowance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Style="{StaticResource DefaultTextBoxStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+
+    </StackPanel>
 </UserControl>

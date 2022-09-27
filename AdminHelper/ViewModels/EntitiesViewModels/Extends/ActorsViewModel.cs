@@ -1,5 +1,5 @@
 ﻿using AdminHelper.models.entities;
-using AdminHelper.Models.Repositories;
+using AdminHelper.Models.Repositories.Shared;
 using AdminHelper.ViewModels.EntityViewModels;
 
 namespace AdminHelper.ViewModels.EntitiesViewModels.Extends

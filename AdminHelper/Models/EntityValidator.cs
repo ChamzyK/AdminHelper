@@ -2,6 +2,12 @@
 
 namespace AdminHelper.Models
 {
+    //TODO: 12
+    //Реализация проверки данных модели
+    //для каждой ИСПОЛЬЗУЕМОЙ в приложении определили метод валидации
+    //т.к. класс статический, а методы это методы-расширении
+    //их можно применять непоспредственно вместе со сущностьями
+    //например вызвать actor.IsValid(), в самом классе Actor такого метода нет
     public static class EntityValidator
     {
         public static bool IsValid(this Actor actor)
@@ -24,7 +30,10 @@ namespace AdminHelper.Models
         public static bool IsValid(this Role role)
         {
             var isRate = role.Rate != null && role.Rate >= 0;
-            return isRate;
+            var isRoleType = role.NameNavigation != null;
+            var isSpectacle = role.SpectacleIdNavigation != null;
+            var isActor = role.ActorIdNavigation != null;
+            return isRate && isRoleType && isSpectacle && isActor;
         }
 
         public static bool IsValid(this RoleType roleType)

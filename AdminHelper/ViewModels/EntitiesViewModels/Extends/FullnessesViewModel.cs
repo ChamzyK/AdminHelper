@@ -1,6 +1,5 @@
 ﻿using AdminHelper.models.entities;
-using AdminHelper.Models.Repositories;
-using AdminHelper.ViewModels.EntityViewModels;
+using AdminHelper.Models.Repositories.Shared;
 
 namespace AdminHelper.ViewModels.EntitiesViewModels.Extends
 {
@@ -10,5 +9,6 @@ namespace AdminHelper.ViewModels.EntitiesViewModels.Extends
             : base(mainViewModel, repository)
         {
         }
+        protected override bool CanCreate(object? arg) => false;
     }
 }

@@ -3,9 +3,11 @@ using System.Linq;
 using AdminHelper.Models.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminHelper.Models.Repositories
+namespace AdminHelper.Models.Repositories.Shared
 {
-    public class EntityRepository<TEntity> : IRepository<TEntity> 
+    //TODO: 14
+    //общий класс для работы с данными, если нужны отдельные реализации то можно унаследовать функционал и переопределить методы
+    public class EntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
         protected readonly AdminHelperDbContext _context;
@@ -25,7 +27,9 @@ namespace AdminHelper.Models.Repositories
         public TEntity Update(TEntity entity)
         {
             _context.ChangeTracker.Clear();
-            return _set.Update(entity).Entity;
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
+            return entry.Entity;
         }
 
         public void Delete(TEntity entity) => _set.Remove(entity);

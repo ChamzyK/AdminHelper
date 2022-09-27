@@ -7,6 +7,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
@@ -36,9 +37,13 @@
             </ContentControl.Resources>
                     <ContentPresenter Content="{Binding}"/>
         </ContentControl>
+
+        <Separator 
+            Grid.Row="1"
+            Margin="5"/>
         
         <UniformGrid 
-            Grid.Row="1"
+            Grid.Row="2"
             Rows="1">
             <Button
                 Content="Назад"

@@ -17,5 +17,7 @@ namespace AdminHelper.models.entities
         public string Name { get; set; } = null!;
 
         public virtual ICollection<Role> Roles { get; set; }
+
+        public override string ToString() => Name;
     }
 }

@@ -1,7 +1,55 @@
 ﻿<UserControl x:Class="AdminHelper.Views.EntityViews.SpectacleView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <TextBlock
+            Text="{Binding ActionText}"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource BigFontSize}"/>
+        <Separator Margin="5"/>
+        <TextBlock
+            Text="Название спектакля:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <TextBox
+            Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Style="{StaticResource DefaultTextBoxStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+
+        <TextBlock
+            Text="Выберите дату:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <DatePicker
+            SelectedDate="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedDateFormat="Long"
+            HorizontalAlignment="Center"
+            Style="{StaticResource DefaultElementStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+
+        <UniformGrid Rows="1">
+            <UniformGrid Columns="1">
+                <TextBlock
+                    Text="Час (0 - 24):"
+                    Style="{StaticResource DefaultTextBlockStyle}"
+                    FontSize="{StaticResource MediumFontSize}"/>
+                <TextBox
+                    Text="{Binding Hours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource DefaultTextBoxStyle}"
+                    FontSize="{StaticResource MediumFontSize}"/>
+            </UniformGrid>
+
+            <UniformGrid Columns="1">
+                <TextBlock
+                    Text="Минута (0-60):"
+                    Style="{StaticResource DefaultTextBlockStyle}"
+                    FontSize="{StaticResource MediumFontSize}"/>
+                <TextBox
+                    Text="{Binding Minutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource DefaultTextBoxStyle}"
+                    FontSize="{StaticResource MediumFontSize}"/>
+            </UniformGrid>
+        </UniformGrid>
+
+    </StackPanel>
 </UserControl>

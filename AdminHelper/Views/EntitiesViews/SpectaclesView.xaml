@@ -7,7 +7,7 @@
         <DataGrid.Columns>
             <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
             <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="*"/>
-            <DataGridTextColumn Binding="{Binding Date}" Header="Дата и время"/>
+            <DataGridTextColumn Binding="{Binding Date, StringFormat='{}{0:dd.MM.yyyy в HH:mm}'}" Header="Дата и время"/>
 
             <DataGridTemplateColumn Width="75">
                 <DataGridTemplateColumn.CellTemplate>

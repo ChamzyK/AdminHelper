@@ -1,5 +1,6 @@
 ﻿using AdminHelper.models.entities;
 using AdminHelper.Models.DbContexts;
+using AdminHelper.Models.Repositories.Shared;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 

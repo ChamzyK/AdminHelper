@@ -1,7 +1,55 @@
 ﻿<UserControl x:Class="AdminHelper.Views.EntityViews.RoleView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <TextBlock
+            Text="{Binding ActionText}"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource BigFontSize}"/>
+
+        <Separator Margin="5"/>
+
+        <TextBlock
+            Text="Выберите роль:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <ComboBox
+            ItemsSource="{Binding RoleTypes}"
+            SelectedItem="{Binding RoleType}"
+            Style="{StaticResource DefaultElementStyle}"
+            FontSize="{StaticResource MediumFontSize}"
+            HorizontalAlignment="Stretch"/>
+
+        <TextBlock
+            Text="Выберите спектакль:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <ComboBox
+            ItemsSource="{Binding Spectacles}"
+            SelectedItem="{Binding Spectacle}"
+            Style="{StaticResource DefaultElementStyle}"
+            FontSize="{StaticResource MediumFontSize}"
+            HorizontalAlignment="Stretch"/>
+
+        <TextBlock
+            Text="Выберите актера:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <ComboBox
+            ItemsSource="{Binding Actors}"
+            SelectedItem="{Binding Actor}"
+            Style="{StaticResource DefaultElementStyle}"
+            FontSize="{StaticResource MediumFontSize}"
+            HorizontalAlignment="Stretch"/>
+
+        <TextBlock
+            Text="Ставка роли:"
+            Style="{StaticResource DefaultTextBlockStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+        <TextBox
+            Text="{Binding Rate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Style="{StaticResource DefaultTextBoxStyle}"
+            FontSize="{StaticResource MediumFontSize}"/>
+
+    </StackPanel>
 </UserControl>

@@ -3,17 +3,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminHelper.Models.DbContexts
 {
+    //TODO: 10
+    //Т.к. бд уже была, то был применен подход Db first  (Все классы бд сгененрированы автоматически, поэтому они такие какие были в бд)
+    //для автогенерации по существующей бд, все го лишь выполнили команду в консоли диспетчера пакетов: Scaffold-DbContext "строка подключения" провайдер_бд
     public partial class AdminHelperDbContext : DbContext
     {
         public AdminHelperDbContext()
         {
+            Database.EnsureCreated(); //создание бд если её нету в ядре бд
         }
 
         public AdminHelperDbContext(DbContextOptions<AdminHelperDbContext> options)
             : base(options)
         {
+            Database.EnsureCreated(); //создание бд если её нету в ядре бд
         }
 
+        //далее - автосгенерированный код
         public virtual DbSet<Actor> Actors { get; set; } = null!;
         public virtual DbSet<Genre> Genres { get; set; } = null!;
         public virtual DbSet<Fullness> FullnessDbSet { get; set; } = null!;
@@ -29,6 +35,7 @@ namespace AdminHelper.Models.DbContexts
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //строка подключения: бд: MS SQL, имя бд: AdminHelperDb
                 optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AdminHelperDb;Trusted_Connection=True");
             }
         }

@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminHelper.models.entities
 {
+    //TODO: 12
+    //Явно указали к какой таблице соответствует этот класс и его столбцы
     [Table("Актер")]
     public partial class Actor
     {
@@ -25,5 +27,7 @@ namespace AdminHelper.models.entities
 
         [NotMapped]
         public int Salary { get; set; }
+
+        public override string ToString() => $"{LastName} {FirstName} {Patronymic}";
     }
 }

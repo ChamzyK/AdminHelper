@@ -7,16 +7,20 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AdminHelper.ViewModels.Shared
 {
+    //TODO: 6
+    //Класс для реализации метода расширения регистрации сервисов
     public static class ViewModelRegistrar
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services) =>
             services
-                .AddSingleton<MainViewModel>()
+                .AddSingleton<MainViewModel>() //добавляем класс <MainViewModel>, который в будущем можно достать в любом классе через конструктор
                 .AddSingleton<LoadingViewModel>()
                 .AddSingleton<ExceptionViewModel>()
 
-                .AddSingleton<EntitiesViewModel<Spectacle>, SpectaclesViewModel>()
-                .AddSingleton<EntitiesViewModel<RoleType>, RoleTypesViewModel>()
+                .AddSingleton<EntitiesViewModel<Spectacle>, SpectaclesViewModel>() //преимущество DI, здесь указывается что при объявлении в конструкторе
+                                                                                   //любого класса входного параметра EntitiesViewModel<Spectacle>,
+                                                                                   //вместо него подставляется класс SpectacleViewModel
+                .AddSingleton<EntitiesViewModel<RoleType>, RoleTypesViewModel>()//и т.д.
                 .AddSingleton<EntitiesViewModel<Role>, RolesViewModel>()
                 .AddSingleton<EntitiesViewModel<Fullness>, FullnessesViewModel>()
                 .AddSingleton<EntitiesViewModel<Actor>, ActorsViewModel>()
@@ -26,5 +30,8 @@ namespace AdminHelper.ViewModels.Shared
                 .AddTransient<EntityViewModel<Role>, RoleViewModel>()
                 .AddTransient<EntityViewModel<Fullness>, FullnessViewModel>()
                 .AddTransient<EntityViewModel<Actor>, ActorViewModel>();
+
+        //singleton - везде один и тот же объект
+        //transient - везде разные объекты
     }
 }
