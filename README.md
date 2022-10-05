@@ -36,4 +36,34 @@ The following approaches were used to build a scalable code structure:
 ## Entity editing example
 ![Alt text](AdminHelper_RoleEditExample.png "Role editing")
 
+---
+
+## Class diagrams
+
+For a more detailed representation of the project code, suggest to take a look at the following class diagrams:
+
+### Entities diagram 
+
+![Alt text](Diagrams/Entities.png)
+
+### Repositories diagram 
+
+![Alt text](Diagrams/Repositories.png)
+
+### Commands diagram 
+
+![Alt text](Diagrams/Commands.png)
+
+### ViewModels diagram 
+
+![Alt text](Diagrams/ViewModels.png)
+
+### EntitiesViewModels diagram 
+
+![Alt text](Diagrams/EntitesViewModels.png)
+
+### EntityViewModels diagram 
+
+![Alt text](Diagrams/EntityViewModels.png)
+
 [^1]: DI implemented with using ```Microsoft.Extensions.Hosting (6.0.1)```
